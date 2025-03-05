@@ -32,7 +32,7 @@ class UserService
                     ->orWhere(DB::raw("CONCAT(lastname,' ', firstname)"), 'like', $search);
                 });
             })
-            ->orderBy('id', 'desc')
+            ->orderBy('updated_at', 'desc')
             ->paginate((int) $request->per_page);
 
         return $data;
@@ -50,7 +50,7 @@ class UserService
         $validated = $request->validated();
         $data = $this->user->create($validated);
         $randomRole = rand(1, 2); 
-        $data->roles()->attach($randomRole);
+        $data->roles()->attach();
 
         return $data;
     }
