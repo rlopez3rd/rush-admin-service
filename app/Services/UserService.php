@@ -50,7 +50,7 @@ class UserService
         $validated = $request->validated();
         $data = $this->user->create($validated);
         $randomRole = rand(1, 2); 
-        $data->roles()->attach();
+        $data->roles()->attach($randomRole);
 
         return $data;
     }
