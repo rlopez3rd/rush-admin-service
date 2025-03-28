@@ -95,4 +95,14 @@ class UserUpdateRequest extends FormRequest
             'postcode.required' => $required
         ];
     }
+
+
+    protected function prepareForValidation(): void
+    {
+
+        $this->merge([
+            'updated_at' => now()
+        ]);
+
+    }
 }

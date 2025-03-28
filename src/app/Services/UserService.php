@@ -40,8 +40,8 @@ class UserService
 
     public function show(int $id) 
     {
-        $data = $this->user->findOrFail($id);
-        
+        $data = $this->user->with(['roles.modulePermissions.module'])->findOrFail($id);
+
         return $data;
     }
 
